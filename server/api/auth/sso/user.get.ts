@@ -1,12 +1,12 @@
 export default defineEventHandler(defineKeycloakHandler(async (event) => {
   const accessToken = getCookie(event, 'access_token')
 
-  // if (!accessToken) {
-  //   throw createError({
-  //     statusCode: 401,
-  //     statusMessage: 'Unauthorized',
-  //   })
-  // }
+  if (!accessToken) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: 'Unauthorized',
+    })
+  }
 
   const { keycloak } = event.context
 
