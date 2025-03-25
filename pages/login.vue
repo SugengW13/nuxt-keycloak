@@ -9,8 +9,8 @@ definePageMeta({
 const { isLoading, login } = useKeycloak()
 
 const form = reactive({
-  username: 'sugeng.warsito',
-  password: '1234qwer',
+  username: '',
+  password: '',
 })
 
 const isValid = computed(() => Boolean(form.username) && Boolean(form.password))
