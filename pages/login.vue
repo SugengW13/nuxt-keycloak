@@ -1,4 +1,11 @@
 <script setup lang="ts">
+definePageMeta({
+  auth: {
+    unauthenticatedOnly: true,
+    navigateAuthenticatedTo: '/authenticated',
+  },
+})
+
 const { isLoading, login } = useKeycloak()
 
 const form = reactive({

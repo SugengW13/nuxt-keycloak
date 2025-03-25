@@ -1,15 +1,15 @@
 export default defineNuxtPlugin(async (nuxtApp) => {
   const { user, fetchUser, refresh } = useKeycloak()
 
-  await fetchUser()
-
-  if (user.value) await refresh()
+  let refreshInterval: NodeJS.Timeout
 
   const visibilityHandler = () => {
     if (document.visibilityState === 'visible') fetchUser()
   }
 
-  let refreshInterval: NodeJS.Timeout
+  await fetchUser()
+
+  if (user.value) await refresh()
 
   nuxtApp.hook('app:mounted', () => {
     document.addEventListener('visibilitychange', visibilityHandler, false)
