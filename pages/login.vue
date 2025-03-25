@@ -1,13 +1,25 @@
 <script setup lang="ts">
-const { login } = useKeycloak()
+const { isLoading, login } = useKeycloak()
 
 const form = reactive({
-  username: '',
-  password: '',
+  username: 'sugeng.warsito',
+  password: '1234qwer',
 })
 
+const isValid = computed(() => Boolean(form.username) && Boolean(form.password))
+
 const onSubmit = async () => {
-  await login(form.username, form.password)
+  if (!isValid.value) {
+    alert('Username & password are requried')
+    return
+  }
+
+  try {
+    await login({ ...form }, '/authenticated')
+  }
+  catch (e: any) {
+    alert(e)
+  }
 }
 </script>
 
@@ -38,6 +50,7 @@ const onSubmit = async () => {
 
         <button
           type="submit"
+          :disabled="isLoading"
           class="bg-blue-600 font-semibold rounded-sm py-1.5 px-2.5 w-full text-white transition hover:opacity-75"
         >
           Log In
