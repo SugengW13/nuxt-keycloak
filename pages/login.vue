@@ -1,11 +1,13 @@
 <script setup lang="ts">
+const { login } = useKeycloak()
+
 const form = reactive({
   username: '',
   password: '',
 })
 
-const onSubmit = () => {
-
+const onSubmit = async () => {
+  await login(form.username, form.password)
 }
 </script>
 
@@ -36,7 +38,7 @@ const onSubmit = () => {
 
         <button
           type="submit"
-          class="bg-blue-600 rounded-sm py-1.5 px-2.5 w-full text-white transition hover:opacity-75"
+          class="bg-blue-600 font-semibold rounded-sm py-1.5 px-2.5 w-full text-white transition hover:opacity-75"
         >
           Log In
         </button>
