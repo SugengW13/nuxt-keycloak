@@ -1,5 +1,5 @@
 <template>
   <div>
-    <nuxt-page />
+    <p>Login</p>
   </div>
 </template>
