@@ -4,7 +4,7 @@ export const useKeycloak = () => {
   const user = useState<null | any>('keycloak:user', () => null)
   const isLoading = useState<boolean>('keycloak:is-loading', () => false)
 
-  const isAuthenticated = computed(() => Boolean(user.value))
+  const isAuthenticated = computed(() => !!user.value)
 
   const fetchUser = async () => {
     isLoading.value = true

@@ -1,13 +1,5 @@
 export default defineEventHandler(defineKeycloakHandler(async (event) => {
-  const accessToken = getCookie(event, 'access_token')
   const refreshToken = getCookie(event, 'refresh_token')
-
-  if (!accessToken || !refreshToken) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: 'Unauthorized',
-    })
-  }
 
   const { keycloak } = event.context
 
@@ -17,7 +9,7 @@ export default defineEventHandler(defineKeycloakHandler(async (event) => {
 
   params.append('client_id', keycloak.clientId)
   params.append('client_secret', keycloak.clientSecret)
-  params.append('refresh_token', refreshToken)
+  params.append('refresh_token', refreshToken!)
 
   await $fetch(url, {
     method: 'POST',
