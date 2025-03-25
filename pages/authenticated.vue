@@ -8,9 +8,16 @@ const { isLoading, user, logout } = useKeycloak()
       class="w-[480px] border rounded shadow-sm py-6 px-8 space-y-6"
     >
       <div
-        v-if="!isLoading"
+        v-if="!isLoading && user"
+        class="space-y-2"
       >
-        <p>{{ user }}</p>
+        <p class="text-center">
+          {{ user.sub }}
+        </p>
+
+        <p class="text-center">
+          Welcome, <span class="font-medium">{{ user.name }}</span> ({{ user.email }})
+        </p>
       </div>
 
       <button

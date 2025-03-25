@@ -5,7 +5,7 @@ export default defineEventHandler(defineKeycloakHandler(async (event) => {
   if (!accessToken || !refreshToken) {
     throw createError({
       statusCode: 401,
-      statusMessage: 'Unauthorized'
+      statusMessage: 'Unauthorized',
     })
   }
 
@@ -17,12 +17,12 @@ export default defineEventHandler(defineKeycloakHandler(async (event) => {
 
   params.append('client_id', keycloak.clientId)
   params.append('client_secret', keycloak.clientSecret)
-  params.append('refresh_token', refreshToken);
+  params.append('refresh_token', refreshToken)
 
   await $fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: params
+    body: params,
   })
 
   deleteCookie(event, 'access_token')
@@ -31,6 +31,6 @@ export default defineEventHandler(defineKeycloakHandler(async (event) => {
   return {
     success: true,
     code: 200,
-    data: null
+    data: null,
   }
 }))

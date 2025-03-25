@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 export const useKeycloak = () => {
-  const user = ref(null)
-  const isLoading = ref(false)
+  const user = useState<null | any>('keycloak:user', () => null)
+  const isLoading = useState<boolean>('keycloak:is-loading', () => false)
 
   const isAuthenticated = computed(() => Boolean(user.value))
 
