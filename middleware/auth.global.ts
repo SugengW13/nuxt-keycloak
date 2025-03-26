@@ -5,6 +5,8 @@ interface MiddlewareMeta {
 }
 
 export default defineNuxtRouteMiddleware(async (to) => {
+  if (import.meta.server) return
+
   const metaAuth: boolean | MiddlewareMeta = typeof to.meta.auth === 'object'
     ? { ...to.meta.auth }
     : to.meta.auth

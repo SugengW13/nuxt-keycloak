@@ -1,4 +1,6 @@
 export default defineNuxtPlugin(async (nuxtApp) => {
+  if (import.meta.server) return
+
   const { user, fetchUser, refresh } = useKeycloak()
 
   let refreshInterval: NodeJS.Timeout

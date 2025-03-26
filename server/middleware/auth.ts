@@ -12,6 +12,8 @@ export default defineEventHandler((event) => {
 
   if (protectedRoutes.includes(path)) {
     if (!accessToken || !refreshToken) {
+      console.error('Unauthorized')
+
       throw createError({
         statusCode: 401,
         statusMessage: 'Unauthorized',
