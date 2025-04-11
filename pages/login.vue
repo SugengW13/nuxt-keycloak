@@ -31,8 +31,8 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <div class="flex items-center justify-center h-screen">
-    <div class="w-[480px] border rounded shadow-sm py-6 px-8 space-y-6">
+  <div class="flex items-center justify-center h-screen bg-gray-50">
+    <div class="w-[480px] border rounded shadow-sm py-6 px-8 space-y-6 bg-white">
       <p class="text-center font-bold text-3xl select-none text-gray-700">
         Nuxt <span class="text-blue-600">Keycloak</span>
       </p>

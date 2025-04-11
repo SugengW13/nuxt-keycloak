@@ -3,9 +3,9 @@ const { loading, user, logout } = useKeycloak()
 </script>
 
 <template>
-  <div class="flex items-center justify-center h-screen">
+  <div class="flex items-center justify-center h-screen bg-gray-50">
     <div
-      class="w-[480px] border rounded shadow-sm py-6 px-8 space-y-6"
+      class="w-[480px] border rounded shadow-sm py-6 px-8 space-y-6 bg-white"
     >
       <div
         v-if="!loading && user"
