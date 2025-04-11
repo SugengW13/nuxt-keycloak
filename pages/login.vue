@@ -6,7 +6,7 @@ definePageMeta({
   },
 })
 
-const { isLoading, login } = useKeycloak()
+const { loading, login } = useKeycloak()
 
 const form = reactive({
   username: '',
@@ -57,7 +57,7 @@ const onSubmit = async () => {
 
         <button
           type="submit"
-          :disabled="isLoading"
+          :disabled="loading"
           class="bg-blue-600 font-semibold rounded-sm py-1.5 px-2.5 w-full text-white transition hover:opacity-75"
         >
           Log In
