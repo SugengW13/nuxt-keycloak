@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 export const useKeycloak = () => {
+  const { $csrfFetch } = useNuxtApp()
+
   const user = useState<null | any>('keycloak:user', () => null)
   const isLoading = useState<boolean>('keycloak:is-loading', () => false)
 
@@ -10,7 +12,7 @@ export const useKeycloak = () => {
     isLoading.value = true
 
     try {
-      const res: any = await $fetch('/api/auth/sso/user')
+      const res: any = await $csrfFetch('/api/auth/sso/user')
 
       if (res.success) user.value = res.data
 
@@ -28,7 +30,7 @@ export const useKeycloak = () => {
     isLoading.value = true
 
     try {
-      await $fetch('/api/auth/sso/refresh', { method: 'POST' })
+      await $csrfFetch('/api/auth/sso/refresh', { method: 'POST' })
     }
     catch (e) {
       throw e
@@ -42,7 +44,7 @@ export const useKeycloak = () => {
     isLoading.value = true
 
     try {
-      const res: any = await $fetch('/api/auth/sso/login', {
+      const res: any = await $csrfFetch('/api/auth/sso/login', {
         method: 'POST',
         body: { ...form },
       })
@@ -66,7 +68,7 @@ export const useKeycloak = () => {
     isLoading.value = true
 
     try {
-      const res: any = await $fetch('/api/auth/sso/logout', { method: 'POST' })
+      const res: any = await $csrfFetch('/api/auth/sso/logout', { method: 'POST' })
 
       if (res.success) {
         user.value = null
