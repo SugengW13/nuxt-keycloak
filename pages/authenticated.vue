@@ -26,7 +26,7 @@ const { loading, user, logout } = useKeycloak()
         class="bg-blue-600 font-semibold rounded-sm py-1.5 px-2.5 w-full text-white transition hover:opacity-75"
         @click="logout('/login')"
       >
-        Log Out
+        {{ loading ? 'Loading...' : 'Log Out' }}
       </button>
     </div>
   </div>

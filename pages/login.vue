@@ -60,7 +60,7 @@ const onSubmit = async () => {
           :disabled="loading"
           class="bg-blue-600 font-semibold rounded-sm py-1.5 px-2.5 w-full text-white transition hover:opacity-75"
         >
-          Log In
+          {{ loading ? 'Loading...' : 'Log In' }}
         </button>
       </form>
     </div>
